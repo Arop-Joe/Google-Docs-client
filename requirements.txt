@@ -1,0 +1,4 @@
+django==1.10
+psycopg2
+django-cors-headers
+google-api-python-client

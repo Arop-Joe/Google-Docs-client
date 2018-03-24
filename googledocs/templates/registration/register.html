@@ -1,0 +1,26 @@
+{% extends 'googledocs/base.html' %}
+
+{% block head %}
+	<title> Rejestracja </title>
+{% endblock %}
+
+{% block content %}
+	<div class="w-50 p-3 mx-auto">
+		<form method="post">
+			{% csrf_token %}
+			<div class="form-group row">
+				<label for="username-field">Nazwa użytkownika</label>
+				<input name="username" type="text" class="form-control" id="username-field">
+			</div>
+			<div class="form-group row">
+				<label for="password-field1">Hasło</label>
+				<input name="password1" type="password" class="form-control" id="password-field1">
+			</div>
+			<div class="form-group row">
+				<label for="password-field2">Potwierdzenie hasła</label>
+				<input name="password2" type="password" class="form-control" id="password-field2">
+			</div>
+			<button class="btn btn-primary" type="submit">Zarejestruj się</button>
+		</form>
+	</div>
+{% endblock %}

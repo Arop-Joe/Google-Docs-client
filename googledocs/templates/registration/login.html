@@ -1,0 +1,22 @@
+{% extends 'googledocs/base.html' %}
+
+{% block head %}
+	<title> Logowanie </title>
+{% endblock %}
+
+{% block content %}
+	<div class="w-50 p-3 mx-auto">
+		<form method="post">
+			{% csrf_token %}
+			<div class="form-group row">
+				<label for="username-field">Nazwa użytkownika</label>
+				<input name="username" type="text" class="form-control" id="username-field">
+			</div>
+			<div class="form-group row">
+				<label for="password-field">Hasło</label>
+				<input name="password" type="password" class="form-control" id="password-field">
+			</div>
+			<button class="btn btn-primary" type="submit">Zaloguj się</button>
+		</form>
+	</div>
+{% endblock %}

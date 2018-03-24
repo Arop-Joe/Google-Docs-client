@@ -1,0 +1,28 @@
+{% extends 'googledocs/base.html' %}
+
+{% block head %}
+	<title> Lista utworzonych dokumentów </title>
+{% endblock %}
+
+{% block content %}
+	<h2> Lista utworzonych dokumentów </h2>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Nazwa</th>
+				<th scope="col">Data utworzenia</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for document in object_list %}
+				<tr>
+					<td><a href='{{ document.link }}'>{{ document.name }}</a></td>
+					<td>{{ document.creation_date }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+{% endblock %}

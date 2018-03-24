@@ -1,0 +1,32 @@
+{% extends 'googledocs/base.html' %}
+
+{% block head %}
+	<title> Strona główna </title>
+	{% load static %}
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="{% static 'googledocs/addnew.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+	<div class="w-75 p-3 mx-auto" id="app">
+		<div class="form-group">
+    		<input v-model="name" type="text" class="form-control form-control-lg" id="docName" placeholder="Nazwa nowego pliku">
+  		</div>
+
+  		<div id="buttons">
+
+  			<button type="button" class="btn btn-primary btn-lg add-doc-button" v-on:click.stop="addDoc">Dodaj dokument</button>
+  			<button type="button" class="btn btn-primary btn-lg add-doc-button" v-on:click.stop="addSheet">Dodaj arkusz</button>
+  		</div>
+
+  		<div id="messages">
+  			<div class="alert alert-info" role="alert">
+  				<img src="{% static 'googledocs/ajax-loader.gif' %}" alt="loading"> Trwa dodawanie pliku. Proszę czekać... 
+  			</div>
+  			<div class="alert alert-warning" role="alert">Nazwa pliku nie może być pusta!</div>
+  			<div class="alert alert-success" role="alert">Poprawnie dodano nowy plik. Jest dostępny pod <a id="doc_link">tym</a> linkiem.</div>
+  			<div class="alert alert-danger" role="alert">Podczas operacji wystąpił nieznany błąd. Proszę spróbować ponownie później.</div>
+  		</div>
+	</div>
+
+{% endblock %}
