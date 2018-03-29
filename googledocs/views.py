@@ -9,14 +9,17 @@ from django.views import View
 from . import api
 from .models import Document
 
+
 class IndexView(LoginRequiredMixin, TemplateView):
 	template_name = "googledocs/addnew.html"
 	login_url = '/login/'
 
+
 class DocumentListView(LoginRequiredMixin, ListView):
 	model = Document
 	login_url = '/login/'
-	
+
+
 class DocumentCreatorView(View):
 	DOCTYPE_SHEET = "sheet"
 	doctype = ""
@@ -40,6 +43,7 @@ class DocumentCreatorView(View):
 			return JsonResponse({
 				'error': 'Brak nazwy.'
 			})
+
 
 def register(request):
 	if request.method == 'POST':

@@ -17,7 +17,9 @@ user_permission = {
 def authenticate(store):
 	creds = store.get()
 	if not creds or creds.invalid:
-		flow = client.flow_from_clientsecrets(os.path.join(settings.BASE_DIR, settings.CLIENT_KEY), SCOPES)
+		flow = client.flow_from_clientsecrets(
+			os.path.join(settings.BASE_DIR, settings.CLIENT_KEY),
+			SCOPES)
 		flags = tools.argparser.parse_args(args=[])
 		creds = tools.run_flow(flow, store, flags)
 	return creds
@@ -42,8 +44,8 @@ def create_doc(title):
 	drive_service = discovery.build('drive', 'v3', http=creds.authorize(Http()))
 
 	file_metadata = {
-		'name' : title,
-		'mimeType' : 'application/vnd.google-apps.document'
+		'name': title,
+		'mimeType': 'application/vnd.google-apps.document'
 	}
 	doc = drive_service.files().create(body=file_metadata, fields="id, name, webViewLink").execute()
 	drive_service.permissions().create(fileId=doc['id'], body=user_permission).execute()
