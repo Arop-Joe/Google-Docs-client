@@ -17,13 +17,13 @@ user_permission = {
 def authenticate(store):
 	creds = store.get()
 	if not creds or creds.invalid:
-		flow = client.flow_from_clientsecrets(os.path.join(settings.BASE_DIR, 'client_secret.json'), SCOPES)
+		flow = client.flow_from_clientsecrets(os.path.join(settings.BASE_DIR, settings.CLIENT_KEY), SCOPES)
 		flags = tools.argparser.parse_args(args=[])
 		creds = tools.run_flow(flow, store, flags)
 	return creds
 
 def create_sheet(title):
-	store = file.Storage('storage.json')
+	store = file.Storage(settings.STORAGE)
 	creds = authenticate(store)
 	
 	sheet_service = discovery.build('sheets', 'v4', http=creds.authorize(Http()))
@@ -36,7 +36,7 @@ def create_sheet(title):
 	return sheet['spreadsheetUrl']
 
 def create_doc(title):
-	store = file.Storage('storage.json')
+	store = file.Storage(settings.STORAGE)
 	creds = authenticate(store)
 
 	drive_service = discovery.build('drive', 'v3', http=creds.authorize(Http()))

@@ -134,3 +134,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 CORS_ORIGIN_ALLOW_ALL = True 
+
+STORAGE = 'storage.json'
+
+CLIENT_KEY = 'client_secret.json'
